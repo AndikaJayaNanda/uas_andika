@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2024 at 04:43 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Oct 31, 2024 at 01:53 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,39 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel`
---
-
-CREATE TABLE `artikel` (
-  `id` int(11) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `isi` text NOT NULL,
-  `kategori` enum('Technology','Lifestyle') NOT NULL,
-  `author` varchar(100) NOT NULL,
-  `tanggal_publikasi` date NOT NULL,
-  `images` varchar(255) NOT NULL,
-  `view` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `artikel`
---
-
-INSERT INTO `artikel` (`id`, `judul`, `isi`, `kategori`, `author`, `tanggal_publikasi`, `images`, `view`) VALUES
-(1, 'Curated Collection Post: 8 Examples of Evolution in Action', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Technology', 'Johnson Smith', '2020-04-13', '', 0),
-(2, 'The Key Benefits of Studying Online [Infographic]', 'Studi online memberikan banyak manfaat bagi pelajar modern.', 'Lifestyle', 'Johnson Smith', '2020-04-13', '', 0),
-(3, '10 Fresh Ways to Get Better Results From Your Blog Posts', 'Berikut ini beberapa tips untuk meningkatkan performa blog Anda.', 'Technology', 'Johnson Smith', '2020-04-14', '', 0),
-(4, 'How to Optimize for On-Page SEO', 'SEO adalah bagian penting dari pemasaran digital modern.', 'Technology', 'Alice Johnson', '2020-04-15', '', 0),
-(5, 'What to Post on Instagram', 'Konten yang tepat dapat meningkatkan engagement Instagram.', 'Lifestyle', 'Alice Johnson', '2020-04-16', '', 0),
-(6, '18 Photo & Video Ideas to Spark Inspiration', 'Jadikan momen sederhana menjadi konten menarik.', 'Lifestyle', 'Bob Williams', '2020-04-17', '', 0),
-(7, 'A Deep Dive into Artificial Intelligence', 'AI semakin mempengaruhi berbagai aspek kehidupan.', 'Technology', 'Emily Clark', '2020-04-18', '', 0),
-(8, 'The Future of Remote Work', 'Kerja jarak jauh menjadi tren di era digital.', 'Lifestyle', 'David Lee', '2020-04-19', '', 0),
-(9, 'The Evolution of Web Development Tools', 'Web development tools berkembang pesat selama dekade terakhir.', 'Technology', 'Chris Evans', '2020-04-20', '', 0),
-(10, 'How Minimalism Can Improve Your Life', 'Gaya hidup minimalis membantu fokus pada hal-hal penting.', 'Lifestyle', 'Emily Clark', '2020-04-21', '', 0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `posts`
 --
 
@@ -68,52 +36,53 @@ CREATE TABLE `posts` (
   `author` varchar(100) NOT NULL,
   `tanggal_publikasi` date NOT NULL,
   `images` varchar(255) NOT NULL,
-  `view` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `view` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `judul`, `isi`, `kategori`, `author`, `tanggal_publikasi`, `images`, `view`) VALUES
-(1, 'Tren Fashion Tahun 2024', 'Gaya minimalis masih mendominasi.', 'Lifestyle', 'Sari Handayani', '2024-10-01', 'cover-style-wanita.webp', 0),
-(4, 'Tips Dekorasi Rumah Minimalis', 'Dekorasi minimalis membuat rumah nyaman.', 'Lifestyle', 'Bobby Ardiansyah', '2024-10-04', '/img/dekorasi.jpg', 0),
-(5, 'Yoga: Olahraga dan Relaksasi', 'Yoga populer untuk kesehatan mental.', 'Lifestyle', 'Arini Rahma', '2024-10-05', '/img/yoga.jpg', 0),
-(6, 'Kiat Menjaga Pola Hidup Sehat', 'Pola hidup sehat memperpanjang umur.', 'Lifestyle', 'Dewi Ratna', '2024-10-06', '/img/hidup-sehat.jpg', 0),
-(7, 'Tips Menabung Efektif', 'Atur keuangan dengan bijak.', 'Lifestyle', 'Rendi Saputra', '2024-10-07', '/img/menabung.jpg', 0),
-(8, 'Kuliner Vegan yang Wajib Dicoba', 'Kuliner vegan semakin beragam.', 'Lifestyle', 'Yuli Astuti', '2024-10-08', '/img/vegan.jpg', 0),
-(9, 'Tren Traveling Tahun Ini', 'Destinasi lokal semakin digemari.', 'Lifestyle', 'Indra Mahardika', '2024-10-09', '/img/traveling.jpg', 0),
-(10, 'Kiat Menjaga Keseimbangan Kerja dan Hidup', 'Work-life balance penting.', 'Lifestyle', 'Taufik Hidayat', '2024-10-10', '/img/worklife.jpg', 0),
-(11, 'Hobi Berkebun di Rumah', 'Berkebun jadi hobi populer.', 'Lifestyle', 'Sinta Dewi', '2024-10-11', 'Banner-Artikel_Berkebun-Hobi-Baru-Para-Milenial-Saat-di-Rumah-Saja.png', 0),
-(12, 'Cara Membuat Kopi Kekinian', 'Coba latte art di rumah.', 'Lifestyle', 'Bagus Nugroho', '2024-10-12', 'hq720.jpg', 0),
-(13, 'Manfaat Journaling Setiap Hari', 'Journaling membantu kesehatan mental.', 'Lifestyle', 'Laras Putri', '2024-10-13', 'Fakta_Seru_-_Journaling-03.jpg', 0),
-(14, 'Olahraga di Rumah Tanpa Alat', 'Tetap bugar dengan olahraga simpel.', 'Lifestyle', 'Rio Firmansyah', '2024-10-14', '45071296.jfif', 0),
-(15, 'Pilihan Interior Rumah Modern', 'Interior modern dengan sentuhan klasik.', 'Lifestyle', 'Wulan Pratiwi', '2024-10-15', 'images_2.jfif', 0),
-(16, 'Gaya Hidup Zero Waste', 'Kurangi sampah demi bumi.', 'Lifestyle', 'Rina Andayani', '2024-10-16', 'Zerowaste.jpeg', 0),
-(17, 'Tips Merawat Kulit Sehat', 'Perawatan kulit alami lebih baik.', 'Lifestyle', 'Nadia Iswara', '2024-10-17', 'images.jfif', 1),
-(18, 'Kiat Memilih Parfum yang Tepat', 'Sesuaikan parfum dengan kepribadian.', 'Lifestyle', 'Aldi Wibisono', '2024-10-18', 'mcRD3qvpSB.jpg', 1),
-(19, 'Cara Mengatasi Burnout', 'Atasi burnout dengan self-care.', 'Lifestyle', 'Ratna Sari', '2024-10-19', 'Website-Inkes_Burnout.jpg', 3),
-(20, 'Inspirasi Outfit Kasual', 'Outfit kasual yang stylish.', 'Lifestyle', 'Fajar Pratama', '2024-10-20', 'cover-style-wanita.webp', 11),
-(21, 'Perkembangan AI di Tahun 2024', 'AI semakin cerdas dengan teknologi terbaru.', 'Technology', 'Budi Santoso', '2024-10-01', '/img/ai.jpg', 0),
-(22, 'Komputasi Kuantum: Masa Depan Komputasi', 'Teknologi kuantum mulai diterapkan di berbagai sektor.', 'Technology', 'Rina Andayani', '2024-10-02', '/img/quantum.jpg', 0),
-(23, '5 Tips Mengamankan Data di Cloud', 'Cloud kini lebih aman dengan langkah ini.', 'Technology', 'Eko Prasetyo', '2024-10-03', '/img/cloud.jpg', 0),
-(24, 'Blockchain di Industri Keuangan', 'Blockchain menjadi solusi transparansi.', 'Technology', 'Sinta Dewi', '2024-10-04', '/img/blockchain.jpg', 0),
-(25, 'Peran IoT di Smart Home', 'Internet of Things membuat rumah semakin pintar.', 'Technology', 'Ahmad Ridwan', '2024-10-05', '/img/iot.jpg', 0),
-(26, 'Kecerdasan Buatan di Dunia Medis', 'AI membantu diagnosis lebih cepat.', 'Technology', 'Cahyo Nugroho', '2024-10-06', '/img/ai-medis.jpg', 0),
-(27, 'Kendaraan Otonom: Harapan dan Tantangan', 'Mobil tanpa pengemudi segera hadir.', 'Technology', 'Lisa Apriani', '2024-10-07', '/img/autonomous.jpg', 0),
-(28, 'Augmented Reality untuk Pendidikan', 'AR membuat belajar lebih interaktif.', 'Technology', 'Benny Setiawan', '2024-10-08', '/img/ar.jpg', 0),
-(29, 'Teknologi 5G dan Dampaknya', '5G membawa koneksi super cepat.', 'Technology', 'Andi Wirawan', '2024-10-09', '/img/5g.jpg', 0),
-(30, 'Cloud Gaming: Masa Depan Game', 'Bermain tanpa konsol dengan cloud gaming.', 'Technology', 'Gilang Saputra', '2024-10-10', '/img/cloud-gaming.jpg', 0);
+(1, 'Masa Depan AI dan Machine Learning', 'Artificial Intelligence (AI) dan Machine Learning (ML) merupakan teknologi yang semakin berkembang pesat. Banyak perusahaan yang menggunakan AI untuk meningkatkan efisiensi dan pelayanan mereka. Perkembangan ini tentu memberikan banyak manfaat bagi pengguna di berbagai sektor. Namun, ada juga tantangan yang harus dihadapi, termasuk masalah etika dan keamanan.', 'Technology', 'Admin', '2024-10-01', 'th.jpeg', 0),
+(2, 'Teknologi 5G dan Dampaknya pada Kehidupan', '5G adalah teknologi jaringan terbaru yang mampu memberikan kecepatan internet yang jauh lebih tinggi. Dengan 5G, konektivitas antar perangkat akan semakin cepat dan efisien. Banyak perangkat IoT juga diuntungkan dengan kehadiran 5G. Namun, ada kekhawatiran terkait dampak kesehatan dan keamanan dari paparan frekuensi 5G.', 'Technology', 'Admin', '2024-10-02', 'th (1).jpeg', 0),
+(3, 'Revolusi Industri 4.0 dan Tantangannya', 'Revolusi Industri 4.0 menggabungkan teknologi digital dalam proses manufaktur. Dengan teknologi seperti IoT, AI, dan data analytics, efisiensi produksi meningkat signifikan. Namun, hal ini menuntut keterampilan baru bagi tenaga kerja. Untuk itu, pelatihan menjadi kebutuhan yang harus dipenuhi.', 'Technology', 'Admin', '2024-10-03', 'th (2).jpeg', 0),
+(4, 'Keamanan Siber di Era Digital', 'Di era digital, keamanan siber menjadi isu penting karena banyak data pribadi yang tersimpan di internet. Perusahaan perlu meningkatkan sistem keamanan mereka untuk melindungi data pelanggan. Masyarakat juga harus berhati-hati dalam berbagi informasi pribadi secara online. Serangan siber seperti phishing dan malware menjadi ancaman nyata.', 'Technology', 'Admin', '2024-10-04', 'th (3).jpeg', 0),
+(5, 'Teknologi Blockchain dan Potensinya', 'Blockchain awalnya dikenal sebagai teknologi di balik cryptocurrency, tetapi sekarang digunakan dalam berbagai sektor. Teknologi ini memberikan transparansi dan keamanan yang lebih baik. Banyak perusahaan mulai memanfaatkan blockchain untuk logistik dan manajemen rantai pasok. Namun, tantangan regulasi masih menjadi hambatan di beberapa negara.', 'Technology', 'Admin', '2024-10-05', '111-112-2-Perantaranet.jpg', 1),
+(6, 'Perkembangan Teknologi Mobil Listrik', 'Mobil listrik kini menjadi tren karena lebih ramah lingkungan dibanding mobil konvensional. Banyak negara mendukung penggunaan mobil listrik dengan menyediakan infrastruktur pengisian daya. Teknologi baterai yang semakin canggih juga membuat mobil listrik lebih efisien. Namun, harga mobil listrik masih cukup tinggi.', 'Technology', 'Admin', '2024-10-06', 'th (4).jpeg', 0),
+(7, 'Pemanfaatan Big Data dalam Bisnis', 'Big Data membantu bisnis memahami perilaku konsumen melalui analisis data yang besar. Dengan Big Data, perusahaan dapat membuat keputusan yang lebih akurat. Namun, pengelolaan dan keamanan data juga menjadi hal yang penting. Banyak perusahaan kini mengandalkan Big Data untuk strategi pemasaran.', 'Technology', 'Admin', '2024-10-07', 'th (5).jpeg', 0),
+(8, 'Virtual Reality dan Masa Depan Hiburan', 'Virtual Reality (VR) memberikan pengalaman hiburan yang lebih interaktif dan nyata. Teknologi ini tidak hanya digunakan dalam video game, tetapi juga di sektor pendidikan dan pelatihan. Dengan VR, pengguna bisa merasakan pengalaman baru di dunia digital. Namun, harga perangkat VR masih cukup tinggi.', 'Technology', 'Admin', '2024-10-08', 'th (6).jpeg', 0),
+(9, 'Manfaat Cloud Computing bagi Perusahaan', 'Cloud computing memungkinkan perusahaan menyimpan dan mengakses data secara fleksibel. Dengan cloud, biaya penyimpanan data dapat ditekan. Namun, perusahaan harus memilih penyedia layanan cloud yang dapat diandalkan. Banyak perusahaan kini menggunakan cloud untuk backup data dan kolaborasi.', 'Technology', 'Admin', '2024-10-09', 'th (7).jpeg', 1),
+(10, 'Perkembangan Teknologi Wearable Device', 'Perangkat wearable seperti smartwatch semakin populer karena fungsinya yang praktis. Wearable device tidak hanya menampilkan waktu, tetapi juga bisa memantau kesehatan. Banyak pengguna yang memanfaatkan fitur kesehatan seperti penghitung langkah dan detak jantung. Teknologi ini diharapkan terus berkembang di masa depan.', 'Technology', 'Admin', '2024-10-10', 'th (8).jpeg', 1),
+(11, 'Gaya Hidup Sehat dengan Pola Makan Seimbang', 'Menjaga pola makan seimbang adalah langkah penting untuk hidup sehat. Mengonsumsi sayur, buah, dan protein dalam porsi yang tepat sangat dianjurkan oleh ahli gizi. Selain itu, minum air yang cukup juga mendukung kesehatan tubuh secara keseluruhan. Pola makan yang baik akan berdampak positif pada kesehatan mental dan fisik.', 'Lifestyle', 'Admin', '2024-10-11', 'th (9).jpeg', 0),
+(12, 'Mengelola Stres dalam Kehidupan Sehari-hari', 'Stres adalah bagian dari kehidupan yang tidak bisa dihindari, tetapi bisa dikelola. Teknik relaksasi seperti meditasi, olahraga, dan waktu berkualitas bersama keluarga dapat membantu mengurangi stres. Dengan mengelola stres, seseorang bisa lebih produktif dan bahagia. Penting juga untuk memiliki waktu istirahat yang cukup.', 'Lifestyle', 'Admin', '2024-10-12', 'th (7).jpeg', 0),
+(13, 'Manfaat Yoga untuk Kesehatan Mental', 'Yoga adalah latihan yang baik untuk kesehatan mental dan fisik. Melalui yoga, seseorang bisa merasa lebih tenang dan fokus. Banyak orang kini melakukan yoga untuk mengatasi kecemasan dan stres. Yoga juga dapat meningkatkan fleksibilitas tubuh.', 'Lifestyle', 'Admin', '2024-10-13', 'th (11).jpeg', 0),
+(14, 'Tips Tidur Berkualitas untuk Kehidupan Lebih Sehat', 'Tidur berkualitas penting untuk menjaga kesehatan. Dengan tidur cukup, tubuh bisa lebih segar dan siap menghadapi hari. Beberapa tips untuk tidur nyenyak antara lain mengatur jadwal tidur yang konsisten, menghindari kafein sebelum tidur, dan menciptakan suasana kamar yang nyaman.', 'Lifestyle', 'Admin', '2024-10-14', 'th (12).jpeg', 0),
+(15, 'Cara Menjaga Kesehatan Mental di Era Digital', 'Di era digital, banyak orang yang menghabiskan waktu di media sosial. Hal ini bisa berdampak negatif jika tidak dikelola dengan baik. Mengatur waktu penggunaan media sosial dapat membantu menjaga kesehatan mental. Penting juga untuk tetap berinteraksi secara langsung dengan orang lain.', 'Lifestyle', 'Admin', '2024-10-15', 'th (13).jpeg', 0),
+(16, 'Masa Depan Teknologi Pencetakan 3D', 'Teknologi pencetakan 3D telah membawa revolusi dalam banyak industri. Dengan teknologi ini, kita bisa mencetak berbagai objek kompleks dengan biaya rendah. Mulai dari bidang medis hingga manufaktur, banyak perusahaan memanfaatkan teknologi ini. Tantangannya adalah meningkatkan kecepatan dan kualitas cetakan.', 'Technology', 'Admin', '2024-10-11', 'th (14).jpeg', 0),
+(17, 'Penggunaan Drone dalam Pertanian Modern', 'Drone kini digunakan untuk memantau dan mengelola lahan pertanian. Teknologi ini memungkinkan petani untuk mendeteksi masalah pada tanaman secara cepat. Dengan bantuan drone, produktivitas pertanian meningkat. Namun, biaya untuk mengoperasikan drone masih cukup tinggi.', 'Technology', 'Admin', '2024-10-12', 'th (15).jpeg', 0),
+(18, 'Pengaruh Teknologi pada Perubahan Iklim', 'Perkembangan teknologi juga berdampak pada lingkungan. Beberapa teknologi membantu mengurangi emisi karbon, namun ada pula yang justru memperburuk. Kesadaran untuk menciptakan teknologi ramah lingkungan semakin meningkat. Ini adalah langkah positif untuk masa depan.', 'Technology', 'Admin', '2024-10-13', 'th (16).jpeg', 0),
+(19, 'Augmented Reality dalam Pendidikan', 'Augmented Reality (AR) telah digunakan dalam dunia pendidikan untuk memberikan pengalaman belajar yang interaktif. Siswa dapat memvisualisasikan konsep sulit dengan lebih mudah. Namun, penerapan AR di sekolah masih terkendala biaya dan keterbatasan teknologi.', 'Technology', 'Admin', '2024-10-14', 'images/tech14.jpg', 0),
+(20, 'Robotika dan Masa Depan Industri', 'Robot kini menjadi bagian tak terpisahkan dalam industri manufaktur. Dengan robot, proses produksi menjadi lebih cepat dan efisien. Namun, ini juga memunculkan kekhawatiran akan pengurangan lapangan kerja. Pendidikan untuk tenaga kerja menjadi solusi utama.', 'Technology', 'Admin', '2024-10-15', 'images/tech15.jpg', 0),
+(21, 'Perkembangan Teknologi Biometrik', 'Teknologi biometrik seperti pemindai wajah dan sidik jari semakin sering digunakan. Teknologi ini meningkatkan keamanan akses dan data pribadi. Namun, ada kekhawatiran terkait privasi pengguna. Penyedia layanan harus memastikan keamanan data pengguna.', 'Technology', 'Admin', '2024-10-16', 'images/tech16.jpg', 0),
+(22, 'Peranan Teknologi dalam Dunia Kesehatan', 'Teknologi telah membawa perubahan besar di dunia kesehatan, mulai dari telemedicine hingga operasi robotik. Pasien bisa mendapat pelayanan medis yang lebih cepat dan akurat. Tantangan utama adalah memastikan teknologi ini dapat diakses oleh semua kalangan.', 'Technology', 'Admin', '2024-10-17', 'images/tech17.jpg', 0),
+(23, 'Perkembangan Kendaraan Otonom', 'Mobil otonom sedang dalam tahap pengembangan oleh beberapa perusahaan besar. Dengan mobil ini, diharapkan kecelakaan lalu lintas dapat dikurangi. Namun, regulasi untuk kendaraan otonom masih menjadi kendala. Keamanan penumpang juga menjadi prioritas utama.', 'Technology', 'Admin', '2024-10-18', 'images/tech18.jpg', 0),
+(24, 'Penerapan Kecerdasan Buatan dalam Bisnis', 'Banyak perusahaan kini memanfaatkan kecerdasan buatan (AI) untuk meningkatkan efisiensi operasional. AI dapat membantu dalam analisis data besar dan otomatisasi tugas berulang. Namun, perusahaan perlu mempertimbangkan etika dalam penggunaan AI.', 'Technology', 'Admin', '2024-10-19', 'images/tech19.jpg', 0),
+(25, 'Pengaruh Teknologi Finansial pada Ekonomi', 'Financial Technology atau FinTech memberikan akses yang lebih mudah ke layanan keuangan. Banyak startup kini menawarkan layanan keuangan digital seperti pembayaran online dan pinjaman. FinTech membuat masyarakat lebih mudah dalam melakukan transaksi.', 'Technology', 'Admin', '2024-10-20', 'images/tech20.jpg', 0),
+(26, 'Pentingnya Berolahraga Secara Rutin', 'Olahraga rutin penting untuk menjaga kesehatan tubuh dan mental. Dengan berolahraga, metabolisme tubuh menjadi lebih baik. Selain itu, olahraga juga membantu mengurangi stres. Banyak jenis olahraga yang bisa dilakukan secara rutin.', 'Lifestyle', 'Admin', '2024-10-21', 'images/lifestyle11.jpg', 0),
+(27, 'Makanan Sehat untuk Meningkatkan Imunitas', 'Makanan sehat seperti buah dan sayur kaya akan nutrisi yang baik untuk tubuh. Nutrisi tersebut membantu meningkatkan imunitas sehingga tubuh lebih tahan terhadap penyakit. Mengonsumsi makanan sehat juga dapat membuat tubuh lebih bugar.', 'Lifestyle', 'Admin', '2024-10-22', 'images/lifestyle12.jpg', 0),
+(28, 'Tips Hemat Energi di Rumah', 'Menghemat energi bisa dimulai dari hal-hal sederhana di rumah. Misalnya dengan mematikan lampu saat tidak digunakan. Menghemat energi tidak hanya mengurangi biaya listrik, tetapi juga berdampak positif bagi lingkungan.', 'Lifestyle', 'Admin', '2024-10-23', 'images/lifestyle13.jpg', 0),
+(29, 'Mengelola Keuangan Pribadi dengan Bijak', 'Mengelola keuangan adalah keterampilan penting yang harus dimiliki setiap orang. Salah satu caranya adalah dengan mencatat pengeluaran dan pemasukan secara rutin. Mengelola keuangan secara bijak bisa membantu menghindari utang.', 'Lifestyle', 'Admin', '2024-10-24', 'images/lifestyle14.jpg', 0),
+(30, 'Manfaat Berkebun di Rumah', 'Berkebun tidak hanya membuat halaman rumah lebih hijau, tetapi juga bermanfaat bagi kesehatan. Aktivitas berkebun bisa mengurangi stres dan memberikan udara segar. Banyak orang kini mulai berkebun di halaman rumah mereka.', 'Lifestyle', 'Admin', '2024-10-25', 'images/lifestyle15.jpg', 2),
+(31, 'Cara Mendapatkan Tidur Berkualitas', 'Tidur berkualitas membantu tubuh pulih dan siap menghadapi hari. Untuk mendapatkan tidur berkualitas, hindari penggunaan gawai sebelum tidur. Selain itu, buatlah lingkungan tidur yang nyaman.', 'Lifestyle', 'Admin', '2024-10-26', 'images/lifestyle16.jpg', 0),
+(32, 'Gaya Hidup Minimalis dan Keuntungannya', 'Gaya hidup minimalis mengajarkan kita untuk hidup dengan lebih sedikit barang. Dengan hidup minimalis, kita bisa lebih fokus pada hal-hal yang penting. Gaya hidup ini juga mengurangi stres dan membuat hidup lebih tenang.', 'Lifestyle', 'Admin', '2024-10-27', 'images/lifestyle17.jpg', 0),
+(33, 'Manfaat Membaca Buku Setiap Hari', 'Membaca buku adalah kegiatan yang bermanfaat untuk menambah wawasan. Dengan membaca, kita bisa mempelajari banyak hal baru. Membaca buku juga baik untuk kesehatan mental dan membantu meningkatkan konsentrasi.', 'Lifestyle', 'Admin', '2024-10-28', 'images/lifestyle18.jpg', 0),
+(34, 'Mengatur Waktu dengan Efektif', 'Manajemen waktu penting untuk meningkatkan produktivitas. Dengan mengatur waktu, kita bisa menyelesaikan lebih banyak tugas. Menghindari menunda-nunda pekerjaan juga menjadi bagian penting dari manajemen waktu.', 'Lifestyle', 'Admin', '2024-10-29', 'images/lifestyle19.jpg', 0),
+(35, 'Pentingnya Menjaga Kesehatan Mental', 'Kesehatan mental sama pentingnya dengan kesehatan fisik. Mengelola stres dan menjaga hubungan yang sehat dengan orang lain bisa mendukung kesehatan mental. Penting juga untuk memiliki waktu untuk diri sendiri.', 'Lifestyle', 'Admin', '2024-10-30', 'images/lifestyle20.jpg', 0);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `artikel`
---
-ALTER TABLE `artikel`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `posts`
@@ -126,16 +95,10 @@ ALTER TABLE `posts`
 --
 
 --
--- AUTO_INCREMENT for table `artikel`
---
-ALTER TABLE `artikel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
